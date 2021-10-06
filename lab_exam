@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main()
+{
+    const double tax = 0.12;
+    float ph = 150;
+    float sss = 250;
+    float pi = 200;
+
+    string name, ename, status, date;
+    float gp, np, pay,work,wtax;
+
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);
+
+    cout << "Enter your name   : ";
+    getline(cin,name);
+    cout << "Employee number   : ";
+    cin >> ename;
+    cout << "Date of Payday    : " ;
+    cin.ignore();
+    getline(cin,date);
+
+    cout << "\nHourly pay rate   : ";
+    cin >> pay;
+    cout << "Hours worked      : ";
+    cin >> work;
+
+    cout << "\nPayroll summary for     : " << name << endl;
+    cout << "Employee No.            : " << ename << endl;
+    cout << "Payroll date            : " << date << endl;
+
+
+    gp = pay * work;
+    wtax = gp * tax;
+    np = gp - wtax - ph - sss - pi;
+
+    //output
+    cout << "\nYou earned " << work << " at " << pay << " per hour" << endl;
+    cout << "Gross pay         : " << gp << endl;
+    cout << "Withholding Tax   : " << wtax << endl;
+    cout << "Philhealth        : " << ph << endl;
+    cout << "SSS               : " << sss << endl;
+    cout << "Pagibig           : " << pi << endl;
+    cout << "-------------------------" << endl;
+    cout << "Net pay           : " << np << endl;
+
+    if (np < 5000.00)
+    {
+        cout << "Employee Status    : Contractual";
+    }
+    else if (np > 5001.00 && np < 10000.00)
+    {
+        cout << "Employee Status   : Probationary";
+    }
+    else
+    {
+        cout << "Employee Status   : Regular";
+    }
+    return 0;
+}
