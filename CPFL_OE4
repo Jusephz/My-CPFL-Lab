@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int height;
+    cout << "Enter height : "; 
+    cin >> height;
+
+    for (int a = 1; a <= height; a++)
+    {
+        for (int b = 1; b <= (height - a); b++)
+        {
+            cout << " ";
+        }
+        for (int c = 1; c <= a * 2 - 1; c++)
+        {
+            if (c == 1 || c == a * 2 - 1)
+            {
+                cout << "*";
+            }
+            else if (a == height)
+            {
+                cout << "*";
+            }
+            else
+            {
+                cout << " ";
+            }
+        }
+        cout << " ";
+        for (int b = 1; b <= (height - a); b++)
+        {
+            cout << "  ";
+        }
+        for (int c = 1; c <= a * 2 - 1; c++)
+        { 
+            if (c == 1 || c == a * 2 - 1)
+            {
+                cout << "*";
+            }
+            else if (a == height)
+            { 
+                cout << "*";
+            }
+            else
+            { 
+                cout << " ";
+            }
+        }
+        cout << " ";
+        for (int b = 1; b <= (height - a); b++)
+        {
+            cout << "  ";
+        }      
+        for (int c = 1; c <= a * 2 - 1; c++)
+        {          
+            if (c == 1 || c == a * 2 - 1)
+            {
+                cout << "*";
+            }
+            else if (a == height)
+            {              
+                cout << "*";
+            }
+            else
+            {        
+                cout << " ";
+            }
+        }      
+        cout << endl;
+    }
+    return 0;
+}
