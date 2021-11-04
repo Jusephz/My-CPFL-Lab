@@ -1,0 +1,97 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int yes=1,a,b,c=0,num;
+char ch[30];
+void reversestring();
+void wait();
+void reverseint();
+
+int main(){
+   do{
+   system("cls");
+        cout << endl;
+        cout << "[1] Reverse a String" << endl;
+        cout << "[2] Reverse an Unsigned Integer" << endl;
+        cout << "[3] Exit " << endl;
+        cout << "Select Program : ";
+        cin >> a;
+
+        switch(a){
+            
+            case 1:{
+            system("cls");
+            cout << "<<Reverse a String>>" << endl;
+             cout << "Enter Any String : ";
+             cin.ignore();
+             cin.getline(ch,30);
+            reversestring();
+            wait();
+            break;
+            }
+            case 2:{
+            system("cls");
+            cout << "<<Reverse an Integer>>" << endl;
+            cout << "Enter a Number [0-9]: ";
+            cin.ignore();
+            cin.getline(ch,30);
+            reverseint();
+            wait();
+            break;
+            }
+            case 3:{
+                cout << "Thank you for using";
+                return 0;
+            }
+            default:{
+                cout << "Invalid input";
+            break;
+            }
+        }
+    
+
+   }while(yes==1);
+   return 0;
+}
+
+void reversestring(){
+    
+
+    for (b=0; ch[b]!='\0';b++)
+    {  
+        c++;
+    }
+    cout << "Reversed String: ";
+
+    for (b=c-1;b>=0;b--)
+    {
+        cout << ch[b];
+    }
+   
+}
+
+void reverseint(){
+
+    for (b=0; ch[b]!='\0';b++)
+    {  
+        c++;
+    }
+    cout << "Reversed Int: ";
+
+    for (b=c-1;b>=0;b--)
+    {
+        cout << ch[b];
+    }
+}
+
+void wait(){
+    
+    cout << endl << "------------------------------------" << endl;
+    cout << "Do you want to try again"<< endl;
+    cout << "[1] to continue" << endl;
+    cout << "[2] to exit" << endl;
+    cout << "------------------------------------"<< endl;
+    cin >> yes;
+}
