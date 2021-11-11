@@ -1,0 +1,124 @@
+#include <iostream>
+using namespace std;
+
+void wait ();
+void KMtoM (double rate1, double km);
+void MtoKM (double rate2, double m);
+void CMtoMM (double rate3, double cm);
+void MMtoCM (double rate4, double mm);
+float rate1 = 1000;
+float rate2 = 0.001;
+float rate3 = 0.1;
+float rate4 = 10;
+double kmto;
+double mto;
+double cmto;
+double mmto;
+
+int ans;
+int main ()
+{  
+
+int xd;
+
+do {
+    system ("cls");
+    cout << endl;
+    cout << "<<Length Coversion App>>"<< endl << endl;
+    cout <<  "What Do You Want to Convert?" << endl;
+    cout << "[1]Kilometers to Meters?" << endl;
+    cout << "[2]Meters to Kilometers?" << endl;
+    cout << "[3]Millimeters to Centimeters?" <<endl;
+    cout << "[4]Centimeters to Millimeters?" <<endl;
+    cout << "[5]Exit Conversion App?" << endl;
+    cout << "Select One Conversion : ";
+    cin >> xd;
+
+    switch(xd){
+        case 1:{
+            system ("cls");
+            cout << "\nConvert KM to M" << endl;
+            cout << "Enter Any Number To Convert : ";
+            cin >> kmto;
+            KMtoM(rate1,kmto);
+            wait();
+            break;
+        }
+        case 2:{
+            system ("cls");
+            cout << "\nConvert M to KM" << endl;
+            cout << "Enter Any Number To Convert : ";
+            cin >> mto;
+            MtoKM(rate2,mto);
+            wait();
+            break;
+        }
+        case 3:{
+            system ("cls");
+            cout << "\nConvert MM to CM" << endl;
+            cout << "Enter Any Number To Convert : ";
+            cin >> mmto;
+            MMtoCM(rate3,mmto);
+            wait();
+            break;
+        }
+        case 4:{
+            system ("cls");
+            cout << "\nConvert CM to MM" << endl;
+            cout << "Enter Any Number To Convert : ";
+            cin >> cmto;
+            CMtoMM(rate4,cmto);
+            wait();
+            break;
+        }
+        case 5:{
+            system ("cls");
+            wait();
+            cout << "\nThank you for Using the App";
+            return 0;
+        }
+        default:{
+            system ("cls");
+            cout << "Invalid Input!";
+            wait();
+        }
+
+        }
+    }while (ans==1);
+return 0;
+}
+
+void wait()
+{
+    cout <<"\nDo You Want to Convert Again?\n";
+    cout <<"[1] Yes " << endl;
+    cout <<"[2] No  " << endl;
+    cout << ":";
+    cin >> ans;
+}
+
+void KMtoM (double rate1, double km = 0)
+{
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << km <<" KiloMeters = " << (km * rate1) << " Meters\n";
+}
+void MtoKM (double rate2, double m = 0)
+{
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << m <<" Meter = " << (m * rate2) << " KiloMeters\n";
+    
+}
+void MMtoCM (double rate3, double mm = 0)
+{
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << mm <<" MilliMeters = " << (mm * rate3) << " CentiMeters\n";
+}
+void CMtoMM (double rate4, double cm = 0)
+{
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << cm <<" CentiMeters = " << (cm * rate4) << " MilliMeters\n";
+}
