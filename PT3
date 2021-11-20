@@ -1,0 +1,152 @@
+//Name         : Joseph Rafael Manio
+// Act         : PT 3
+// Description : File I/O implementation
+// Choose between Salary program or POS to apply file I/O stream. Its means that your data will be recorded in a file permanently.
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+void clear();
+void read();
+void input();
+void wait();
+int ll,ans;
+
+int main(){
+    do {
+    system("cls");
+    cout << endl;
+    cout << "Salary Program" << endl;
+    cout << "[1] Input Data" << endl;
+    cout << "[2] Show Input Data" << endl;
+    cout << "[3] Delete Input Data" << endl;
+    cout << "[4] Exit" << endl;
+    cout << "Select : ";
+    cin >> ll;
+
+    switch(ll){
+        case 1:{
+            input();
+            wait();
+            break;
+        }
+
+        case 2:{
+            read();
+            wait();
+            break;
+        }
+        case 3:{
+            clear();
+            wait();
+            break;
+        }
+        case 4:{
+            wait();
+            cout << "Goodbye";
+            return 0;
+        }
+        default: {
+            cout << "Invalid Input";
+            wait();
+        }
+    }
+    }while (ans==1);
+    return 0;
+}
+ void input (){
+    string EI,EN;
+    int hours;
+    double rph,gp,np,tax,taxs;
+    
+    ofstream File;
+    File.open("Salary_Tax_Output.txt", ios::out | ios::trunc);
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);  
+
+    cout << "Enter Employee Name           : ";
+    cin.ignore();
+    getline(cin,EN);
+    cout << "Enter Employee ID             : ";
+    cin >>  EI;
+    cout << "Enter numbers of hours worked : ";
+    cin >> hours;
+    cout << "Enter rate per hour           : ";
+    cin >> rph;
+     if(hours <= 40){
+        gp  =  rph * hours; 
+
+        if (gp >= 40000){
+        tax = 0.12;
+        taxs = gp * tax;
+        np = gp - taxs;
+     }
+        if (gp <29999){
+        tax = 0.05;
+        taxs = gp * tax;
+        np = gp - taxs;
+     }
+     if (gp > 30000 && gp < 40000){
+        tax = 0.10;
+        taxs = gp * tax;
+        np = gp - taxs;
+    }
+    }else if(hours > 40){
+        gp  =  rph * 40 + 1.5 * rph * (hours - 40);
+
+        if (gp >= 40000){
+        tax = 0.12;
+        taxs = gp * tax;
+        np = gp - taxs;
+     }
+        if (gp <29999){
+        tax = 0.05;
+        taxs = gp * tax;
+        np = gp - taxs;
+     }
+     if (gp > 30000 && gp < 40000){
+        tax = 0.10;
+        taxs = gp * tax;
+        np = gp - taxs;
+    }
+    
+    }else{
+        cout << "Invalid input!";
+
+    }
+    File << "Employee Name                 : " << EN << endl;
+    File << "Employee ID                   : " << EI << endl;
+    File << "Number of hours worked is     : " << hours << endl;
+    File << "Your Gross Pay is             : " << gp << endl;
+    File << "Your Tax Rate is              : " << tax << endl;
+    File << "Your Net Pay is               : " << np << endl;
+
+    File.close();
+ }
+
+void clear (){
+    fstream clear;
+    
+    clear.open("Salary_Tax_Output.txt", ios::out | ios::trunc);
+    cout << "Data has been cleared" << endl;
+}
+
+void read(){
+    string data;
+
+    ifstream Readfile("Salary_Tax_Output.txt");
+    while (getline (Readfile,data))
+    {
+        cout << data << endl;
+    }
+    Readfile.close();
+}
+
+void wait(){
+    cout << "\nUse App Again? " << endl;
+    cout << "[1] Yes " << endl;
+    cout << "[2] No  " << endl;
+    cin >> ans;
+}
