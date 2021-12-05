@@ -1,0 +1,131 @@
+//Name: Joseph Rafael Manio
+//Activity: OE7
+//Description: We are tasked to apply login credentials to any lab activities using C-string.
+//Date: 12-05-2021
+
+
+#include <iostream>
+#include <cstring>
+#include <string.h>
+using namespace std;
+
+void wait();
+void searching(int i[], int num);
+void asc(int i[], int num);
+
+const int size = 500;
+
+int main ()
+{
+
+    char input_username[20] = "Raf";
+    char username[20];
+    char input_password[20] = "12345";
+    char password[20];
+
+    cout << "Welcome to Array!" << endl;
+    start:
+    cout << "\nPlease Input Username and Password Below" << endl;
+    cout << "Username :";
+    cin >> username;
+    cout << "Password :";
+    cin >> password;
+    
+    system("cls");
+    if(!(strcmp(input_username,username))){
+        cout << "Your Username is Correct ^^" << endl;
+    }else{
+        cout << "Your Username is Incorrect ^^" << endl;
+    }if(!(strcmp(input_password,password))){
+        cout << "Your Password is Correct ^^" << endl;
+    }else{
+        cout << "Your Password is Incorrect ^^" << endl;
+        goto start;
+    }
+
+
+    
+    int i[size], num , xd;
+    cout << "<<Welcome>>" << endl;
+    cout << "\nInput #s for Array : ";
+    cin >> num;
+
+    cout<<"Enter " << num << " number\n";
+    for(int q=0; q<num; q++)
+    {
+        cin>>i[q];
+    }
+
+    do
+    {
+        system("cls");
+        cout << " Arrays Sorting App" << endl;
+        cout << " [1] Searching Array " << endl;
+        cout << " [2] Sort Array Ascending " << endl;
+        cout << " [0] Exit " << endl;
+        cout << " Enter Your Choice : ";
+        cin >> xd;
+
+    switch  (xd)
+        {
+            case 1:{
+            searching(i,num);
+            wait();
+            break;
+            }
+
+            case 2:{
+            asc(i,num);
+            wait();
+            break;
+            }
+            case 0:{
+            cout << "Goodbye!" << endl;
+            return 0;
+            }
+            default:{
+            cout << "Invalid Input!!!" << endl;
+            wait();
+            break;
+            }
+        }
+    }while (true);
+}
+
+
+void wait()
+{
+    cin.ignore();
+    cout << "\nPress Enter or Return to Continue...";
+    cin.get();
+}
+
+void searching(int i[], int num)
+{
+    for(int x = 0; x < num; x++)
+    {
+    cout << "\n Not Sorted Array Elmement [" << x << "] "<< i[x] << endl;
+    }
+}
+void asc(int i[], int num)
+{
+int w,j,temp;
+
+  for(w=0; w<num; w++)
+    {
+        for(j=w+1; j<num; j++)
+        {
+            if(i[j] < i[w])
+            {
+                temp = i[w];
+                i[w] = i[j];
+                i[j] = temp;
+            }
+        }
+    }
+    cout<<"Elements of array in sorted ascending order:"<<endl;
+    for(w=0; w<num; w++)
+    {
+        cout<<i[w]<<endl;
+    }
+}
